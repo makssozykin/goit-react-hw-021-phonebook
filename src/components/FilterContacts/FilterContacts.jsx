@@ -4,7 +4,7 @@ export const FilterContacts = ({ value, filter }) => {
   return (
     <div>
       <label>
-        Find contacts:
+        <span>Find contacts:</span>
         <br />
         <input
           onChange={filter}

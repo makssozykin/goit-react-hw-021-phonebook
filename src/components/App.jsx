@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid';
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { FilterContacts } from './FilterContacts/FilterContacts';
+import css from './App.module.css';
 
 export class App extends Component {
   state = {
@@ -41,7 +42,6 @@ export class App extends Component {
   }
 
   deleteContact = contactId => {
-    console.log('contactId: ', contactId);
     this.setState(prevState => {
       return {
         contacts: prevState.contacts.filter(
@@ -54,7 +54,7 @@ export class App extends Component {
   render() {
     const visibleContacts = this.getContact();
     return (
-      <div>
+      <div className={css.container}>
         <h1>Phonebook</h1>
         <ContactForm addContact={this.handleAddContact} />
         <h2>Contacts</h2>
@@ -64,7 +64,7 @@ export class App extends Component {
             filter={this.onChangeFilter}
           />
         ) : (
-          'Your Phonebook is empty! Add contact!'
+          <p>Your Phonebook is empty! Add contact!</p>
         )}
 
         {this.state.contacts.length > 0 && (
